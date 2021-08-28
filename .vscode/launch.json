@@ -11,7 +11,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             // "args" : ["6","6","90" ,"12" ,"18" ,"30" ,"18"],
-            "args" : ["3","4","7"]
+            "args" : ["35","3"]
         }
     ]
 }

@@ -1,35 +1,14 @@
 import sys
 
-def extendedEuclidean(a,b):
-    # input -> two non-negative integers a and b
-    # output -> (d,x,y) where d=gcd(a,b) and x,y such that ax+by = d
-    if b>a:
-        # a >=b necessary
-        a,b=b,a
-    if b==0:
-        gcd=a
-        x=1
-        y=0
-        return (gcd,x,y)
-    x1 = 0
-    x2 = 1
-    y1 = 1
-    y2 = 0
-    while b>0:
-        quotient = a//b
-        remainder = a-quotient*b
-        x = x2 - quotient*x1
-        y = y2 - quotient*y1
-        a = b
-        b = remainder
-        x2 = x1
-        x1 = x
-        y2 = y1
-        y1 = y
-    gcd = a
-    x = x2
-    y = y2
-    return (gcd,x,y)
+def extendedEuclidean(a, m):
+ 
+    if a == 0 : 
+        return m, 0, 1
+            
+    gcd, x1, y1 = extendedEuclidean(m%a, a)
+    x = y1 - (m//a) * x1
+    y = x1
+    return gcd, x, y
 
 def gcd_euclidean(a,b):
     if a==0:
@@ -45,7 +24,7 @@ def coprimes(a,b):
 def inverse(a,m):
     if coprimes(a,m):
         _,x,y = extendedEuclidean(a,m)
-        inv = (y+m)%m
+        inv = (x+m)%m
         return inv
     else:
         return 1
