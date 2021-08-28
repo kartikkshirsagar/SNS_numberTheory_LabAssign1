@@ -53,7 +53,7 @@ def main():
     n = int(sys.argv[3])
     
     ans = calcExp(a,x,n)
-    print("= ",ans)
+    print("= ",int(ans))
 
 
 

@@ -19,6 +19,8 @@ def primeFactors(n):
 def main():
     n = int(sys.argv[1])
     pFactors = primeFactors(n)
-    print(pFactors)
+    for x in pFactors:
+        print(x,end=' ')
+    print('')
 if __name__ == '__main__':
     main()
