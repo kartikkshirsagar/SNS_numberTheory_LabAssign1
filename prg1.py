@@ -33,9 +33,10 @@ def main():
         nums.append(int(sys.argv[x+2]))
         x+=1
     divisors = commonDivisors(nums)
-    for x in divisors:
-        print(x,end=" ")
-    print('')
+    ret = ""
+    for x in sorted(divisors):
+        ret += str(x) + " "
+    print(ret[:-1],end="")
 
 
 if __name__ == '__main__':

@@ -6,15 +6,27 @@ def coprimes(a,b):
         return True
     else:
         return False
+def get_phi(n):
+    p=2     
+    result=n
+    while p * p <= n:
+        if (n % p == 0):
+            while n % p == 0:
+                n = int(n / p)
+            result = result - int(result / p)
+        p = p+1
+    if n > 1:
+        result -= int(result / n)
+    return result
 
-def phi(m):
-    if checkPrime(m):
-        return m-1
-    ct=0
-    for i in range(1,m):
-        if coprimes(i,m):
-            ct+=1
-    return ct
+# def phi(m):
+#     if checkPrime(m):
+#         return m-1
+#     ct=0
+#     for i in range(1,m):
+#         if coprimes(i,m):
+#             ct+=1
+#     return ct
 
 def getDivisors(n):
     i = 1
@@ -46,10 +58,10 @@ def gcd_euclidean(a,b):
 
 def orderUnderModulo(a,m):
     if gcd_euclidean(a,m)==1:
-        totient = phi(m)
+        totient = get_phi(m)
         divisors = sorted(getDivisors(totient))
         for divisor in divisors:
-            if math.pow(a,divisor)%m==1:
+            if pow(a,divisor,m)==1:
                 return divisor
         return totient
 
@@ -58,7 +70,7 @@ def main():
     a = int(sys.argv[1])
     m = int(sys.argv[2])
     ans = orderUnderModulo(a,m)
-    print(int(ans))
+    print(int(ans),end="")
     
 
 

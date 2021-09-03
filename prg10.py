@@ -62,10 +62,6 @@ def getRRSM(m):
 
 
 
-
-
-
-
 def main():
     #get  and m
     m = int(sys.argv[1])
@@ -78,7 +74,7 @@ def primitiveRoots(m):
     rrsm_set = getRRSM(m)
 
     print(num_roots, end=" ")
-
+    ret = ""
     for ele in rrsm_set:
 
         flag = True
@@ -89,8 +85,8 @@ def primitiveRoots(m):
                 flag = False
         
         if flag:
-            print(ele, end=" ")
-    print('')
+            ret += str(ele) + " "
+    print(ret[:-1],end="")
 
 
 if __name__ == '__main__':

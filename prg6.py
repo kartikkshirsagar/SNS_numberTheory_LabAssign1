@@ -26,9 +26,9 @@ def inverse(a,m):
         print("Y",end = ' ')
         _,x,y = extendedEuclidean(a,m)
         inv = (x+m)%m
-        print(int(inv))
+        print(int(inv),end="")
     else:
-        print("N")
+        print("N",end="")
 
 def main():
     a = int(sys.argv[1])

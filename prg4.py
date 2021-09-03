@@ -21,9 +21,11 @@ def getRRSM(m):
 def main():
     m = int(sys.argv[1])
     RRSM = getRRSM(m)
-    for x in RRSM:
-        print(x,end=" ")
-    print(" phi(m) = ",len(RRSM))
+    ret = ""
+    for x in sorted(RRSM):
+        ret += str(x) + " "
+    print(ret,end = "") 
+    print(len(RRSM),end="")
 
 
 

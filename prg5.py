@@ -1,5 +1,4 @@
 import sys
-import math
 def checkPrime(n):
     if n==2:
         return True
@@ -23,27 +22,33 @@ def coprimes(a,b):
     else:
         return False
 
-def phi(m):
-    ct=0
-    for i in range(1,m):
-        if coprimes(i,m):
-            ct+=1
-    return ct
+def phi(n):
+    p=2     
+    result=n
+    while p * p <= n:
+        if (n % p == 0):
+            while n % p == 0:
+                n = int(n / p)
+            result = result - int(result / p)
+        p = p+1
+    if n > 1:
+        result -= int(result / n)
+    return result
 
 def calcExp(a,x,n):
     temp = x
     if checkPrime(n):
         totient = n-1
         x = x%totient
-        print("{4}^{0}( mod {1} ) ≡ {4}^{2}( mod {1} ) * {4}^({5} * {3})(mod {1})".format(temp,n,x,temp//totient,a,totient))
-        print("{0}^{1}( mod {2} ) ≡ {0}^{3}( mod {2} ) * 1".format(a,temp,n,x))
-        return math.pow(a,x)%n
+        # print("{4}^{0}( mod {1} ) ≡ {4}^{2}( mod {1} ) * {4}^({5} * {3})(mod {1})".format(temp,n,x,temp//totient,a,totient))
+        # print("{0}^{1}( mod {2} ) ≡ {0}^{3}( mod {2} ) * 1".format(a,temp,n,x))
+        return (a**x)%n
     else:
         totient = phi(n)
         x = x%totient
-        print("{4}^{0}( mod {1} ) ≡ {4}^{2}( mod {1} ) * {4}^({5} * {3})(mod {1})".format(temp,n,x,temp//totient,a,totient))
-        print("{0}^{1}( mod {2} ) ≡ {0}^{3}( mod {2} ) * 1".format(a,temp,n,x))
-        return math.pow(a,x)%n
+        # print("{4}^{0}( mod {1} ) ≡ {4}^{2}( mod {1} ) * {4}^({5} * {3})(mod {1})".format(temp,n,x,temp//totient,a,totient))
+        # print("{0}^{1}( mod {2} ) ≡ {0}^{3}( mod {2} ) * 1".format(a,temp,n,x))
+        return (a**x)%n
 
 
 
@@ -53,7 +58,7 @@ def main():
     n = int(sys.argv[3])
     
     ans = calcExp(a,x,n)
-    print("= ",int(ans))
+    print(int(ans),end="")
 
 
 

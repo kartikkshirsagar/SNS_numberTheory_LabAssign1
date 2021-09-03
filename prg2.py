@@ -12,7 +12,7 @@ def extendedEuclidean(a, m):
 
 def main():
     ans = extendedEuclidean(int(sys.argv[1]),int(sys.argv[2]))
-    print(ans[1],ans[2])
+    print(ans[1],ans[2],end="")
 
 
 if __name__ == '__main__':

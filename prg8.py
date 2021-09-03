@@ -54,8 +54,9 @@ def CRT(congruences):
         # now check if all congruences have a solution
         for congruence in congruences:
             if not checkSol(congruence):
-                print("Sol does not exist.")
+                print("N")
                 return
+        print("Y",end=" ")
         for congruence in congruences:
             # convert into CRT format
             congruence[1] = (congruence[1]*inverse(congruence[0],congruence[2]))%congruence[2]
@@ -66,9 +67,9 @@ def CRT(congruences):
             b = inverse(M/congruence[2],congruence[2])
             summ = (M/congruence[2])*b*congruence[1]
             ans+=summ
-        print(int(ans%M))
+        print(int(ans%M),end="")
     else:
-        print("All m's are not relatively prime")
+        print("N",end="")
 
 
 def main():

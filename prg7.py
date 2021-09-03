@@ -22,12 +22,10 @@ def coprimes(a,b):
         return False
 
 def inverse(a,m):
-    if coprimes(a,m):
-        _,x,y = extendedEuclidean(a,m)
-        inv = (x+m)%m
-        return inv
-    else:
-        return 1
+    _,x,y = extendedEuclidean(a,m)
+    inv = (x+m)%m
+    return x
+
 
 def solveCongruence(a,b,m):
     gcd = gcd_euclidean(a,m)
@@ -35,18 +33,19 @@ def solveCongruence(a,b,m):
         print("Y",end=' ')
         print(gcd,end=' ')
         # x = beta*alphainv mod U
-        beta = b/gcd
-        alpha = a/gcd
-        U = m/gcd
+        beta = b//gcd
+        alpha = a//gcd
+        U = m//gcd
         alphainv = inverse(alpha,U)
         ans = (beta*alphainv)%U
         i=0
+        ret = ""
         while i<gcd:
-            print(int(ans+i*U),end=' ')
+            ret+=str(int(ans+i*U))
             i+=1 
-        print('')
+        print(ret[:],end="")
     else:
-        print("N")
+        print("N",end="")
 def main():
     a = int(sys.argv[1])
     b = int(sys.argv[2])
